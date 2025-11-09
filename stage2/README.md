@@ -2,6 +2,8 @@
 
 ## Setup
 
+`gcc -o namespace-jail namespace-jail.c`
+
 While `chroot` only changes the apparent root directory, Linux Namespaces allow for the virtualization of various system resources. This means a process can have its own private view of the system, including mounts, networking, users, and process IDs (PIDs). On a high level, Linux namespaces allow the isolation of access to certain system resources. To processes inside the namespace it appears that they have their own instance of the resource and changes to the resource are only visible to processes inside the same namespace. There are seven different types of namespaces, named after the resource they provide isolation for:
 
 - `cgroup` namespaces for Linux cgroups
