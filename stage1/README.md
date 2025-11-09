@@ -17,8 +17,12 @@ $ ldd /bin/ls
 
 The first one, `linux-vdso.so.1`, is part of the kernel so it's not phisically in the disk and hence, doesn't need to be copied.
 
+As a test, run `cat /etc/passwd`, the file is not found.
+
 ## Attack
 
 There is a well-known weakness in `chroot` that allows a process with `root` privileges (specifically `CAP_SYS_CHROOT`) inside the jail to escape.
 
 It works by creating a new jail inside the current one, but not changing the Current Working Directory (CWD) into it immediately. Because the CWD is now outside the new (nested) jail root, `chdir("..")` can be used to traverse up past the original chroot boundary.
+
+After running the `jailbreak` binary, run again the `cat /etc/passwd` command and check out this time it actually works.
