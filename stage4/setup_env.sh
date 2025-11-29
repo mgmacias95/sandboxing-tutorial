@@ -5,5 +5,5 @@ sudo apparmor_parser -r /etc/apparmor.d/stage4
 docker run --rm -it \
   --cap-add=SYS_ADMIN \
   --security-opt apparmor=stage4 \
-  -v "$(PWD):/data" \
+  -v "$(pwd):/data" \
   ubuntu bash
