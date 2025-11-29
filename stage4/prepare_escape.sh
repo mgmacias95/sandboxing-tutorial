@@ -1,3 +1,6 @@
+# Add dependencies
+DEBIAN_FRONTEND=noninteractive apt-get install -y gcc
+
 # Create a escape
 cat <<EOF > /escape.sh
 #!/bin/sh
