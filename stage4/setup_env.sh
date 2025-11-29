@@ -1,4 +1,4 @@
-sudo mv stage4 /etc/apparmor.d/stage4
+sudo cp stage4 /etc/apparmor.d/stage4
 
 sudo apparmor_parser -r /etc/apparmor.d/stage4
 
