@@ -1,0 +1,18 @@
+#include <tunables/global>
+    profile stage4 flags=(attach_disconnected) {
+            #include <abstractions/base>
+            capability,
+            dbus,
+            file,
+            mount,
+            network,
+            pivot_root,
+            ptrace,
+            remount,
+            signal,
+            umount,
+            unix,
+            deny mount fstype = cgroup,
+            deny mount options in (bind) /sys/**,
+            deny /sys/fs/cgroup/**/release_agent w,
+    }
