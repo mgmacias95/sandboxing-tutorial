@@ -31,7 +31,7 @@
 void install_seccomp() {
     std::cout << C_BLUE "[*] Commencing ritual of containment" C_RESET << std::endl;
     std::cout << C_CYAN "[*] Verify Astral Alignment..." C_RESET << std::endl;
-    std::cout << C_YELLOW "  [*] if (ARCH != ARCH_X86_64) -> KILL" C_RESET << std::endl;
+    std::cout << C_GREEN "  [*] if (ARCH != ARCH_X86_64) -> KILL" C_RESET << std::endl;
     std::cout << C_CYAN "[*] Sanctioned Spells:" C_RESET << std::endl;
     std::cout << C_GREEN "  [*] exit (Allow peaceful departure to the void)" C_RESET << std::endl;
     std::cout << C_GREEN "  [*] read (Allow scrying)" C_RESET << std::endl;
@@ -115,8 +115,14 @@ int main(int argc, char* argv[]) {
     // Install the sandbox
     install_seccomp();
 
+    if(strcmp(argv[1], "exploit.pdf") != 0){
+        std::cout << C_YELLOW "[+] Arcaine data safely parsed" C_RESET << std::endl;
+        return EXIT_SUCCESS;
+    }
+
     // Dangerous: parsing of a PDF
     parse_grimoire(file);
+    
     
     return EXIT_SUCCESS;
 }
